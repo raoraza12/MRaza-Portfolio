@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatModal.css';
-import razaImg from './assets/raza_hero.png';
+import razaImg from './assets/raza_hero.jpg';
 
 const INITIAL_MESSAGES = [
   {
