@@ -316,7 +316,15 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .reveal {
+    touch-action: pan-y !important;
+  }
+
+  .reveal-img {
+    object-position: 55% 35% !important;
+  }
+
   .reveal-caption {
     bottom: 12px !important;
     left: 14px !important;
