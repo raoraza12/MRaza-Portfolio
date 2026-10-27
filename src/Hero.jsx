@@ -38,6 +38,26 @@ export default function Hero() {
     }
   };
 
+  useEffect(() => {
+    const vid = heroVidRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    vid.defaultMuted = true;
+    vid.playsInline = true;
+    vid.setAttribute('muted', '');
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', 'true');
+    const tryPlay = () => {
+      if (vid.paused) vid.play().catch(() => {});
+    };
+    tryPlay();
+    const evts = ['touchstart', 'scroll', 'click'];
+    evts.forEach((e) => window.addEventListener(e, tryPlay, { passive: true }));
+    return () => {
+      evts.forEach((e) => window.removeEventListener(e, tryPlay));
+    };
+  }, []);
+
   return (
     <>
       <section className="hero" id="top">
@@ -63,6 +83,7 @@ export default function Hero() {
               loop
               muted
               playsInline
+              webkit-playsinline="true"
               preload="auto"
             />
           </button>

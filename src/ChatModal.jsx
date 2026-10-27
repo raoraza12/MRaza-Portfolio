@@ -147,9 +147,9 @@ export default function ChatModal({ isOpen, onClose }) {
     }
 
     // 7. Projects & Portfolio Works
-    if (/\b(project|projects|work|works|portfolio|nexus|drake|earthy|healthmate|salt|cloud|hackathon|indus|saylani)\b/i.test(lower)) {
+    if (/\b(project|projects|work|works|portfolio|nexus|drake|earthy|healthmate|salt|cloud|hackathon|indus|saylani|warehouse)\b/i.test(lower)) {
       return {
-        text: "Raza ke key featured projects hain:\n1. 📚 Nexus AI Book — Intelligent book reading with neural context exploration.\n2. 🛍️ Drake Wears — Luxe fashion storefront with Lenis physics & Postgres.\n3. ⚡ Earthy Electronics — Eco marketplace with Gemini AI scrapers.\n4. 🩺 HealthMate Telemetry — Medical telemetry & AI diagnostics.\n5. 🍽️ Salt & Pepper — Fine dining culinary system.\n6. ☁️ Indus Weave HR Pipeline (Saylani Cloud Hackathon) — Forensic HR telemetry warehouse & ETL pipeline across 470k+ records with 3D Cyber Operations Center.\nProjects section me aap inke live links aur GitHub dekh sakte hain!",
+        text: "Raza ke key featured projects hain:\n1. 📚 Nexus AI Book — Intelligent book reading with neural context exploration.\n2. ☁️ Cloud Data Warehouse (Saylani Cloud Hackathon) — Forensic HR telemetry warehouse & ETL pipeline across 470k+ records with 3D Cyber Operations Center.\n3. 🛍️ Drake Wears — Luxe fashion storefront with Lenis physics & Postgres.\n4. ⚡ Earthy Electronics — Eco marketplace with Gemini AI scrapers.\n5. 🩺 HealthMate Telemetry — Medical telemetry & AI diagnostics.\n6. 🍽️ Salt & Pepper — Fine dining culinary system.\nProjects section me aap inke live links aur GitHub dekh sakte hain!",
         showEmailAction: true,
       };
     }

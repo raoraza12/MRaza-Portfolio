@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import jacketImg from './assets/raza_hero.jpg';
-import heroImg from './assets/raza_hero.jpg';
+import heroImg from './assets/raza_studio_creative.jpg';
 
 export default function HeroReveal() {
   const btnRef = useRef(null);

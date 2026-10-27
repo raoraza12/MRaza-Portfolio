@@ -6,7 +6,29 @@ export default function DiveIntro() {
   const secRef = useRef(null);
   const gRef = useRef(null);
   const textRef = useRef(null);
+  const vidRef = useRef(null);
   const [center, setCenter] = useState({ x: 800, y: 450 });
+
+  useEffect(() => {
+    const vid = vidRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    vid.defaultMuted = true;
+    vid.playsInline = true;
+    vid.setAttribute('muted', '');
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', 'true');
+
+    const tryPlay = () => {
+      if (vid.paused) vid.play().catch(() => {});
+    };
+    tryPlay();
+    const evts = ['touchstart', 'touchend', 'touchmove', 'scroll', 'click', 'pointerdown'];
+    evts.forEach((e) => window.addEventListener(e, tryPlay, { passive: true }));
+    return () => {
+      evts.forEach((e) => window.removeEventListener(e, tryPlay));
+    };
+  }, []);
 
   useEffect(() => {
     const updateCenter = () => {
@@ -68,12 +90,14 @@ export default function DiveIntro() {
         <img className="dive-cover-bg" src={heroBgImg} alt="" draggable="false" />
         <div className="dive-masked">
           <video
+            ref={vidRef}
             className="dive-video"
             src={heroVdo}
             autoPlay
             loop
             muted
             playsInline
+            webkit-playsinline="true"
             preload="auto"
           />
           <div className="dive-blur-grad" />

@@ -4,14 +4,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MIN_WIDTH = 600;
 const CURVE_POINTS = [
   { c1: [0, 0.1], c2: [-0.1, 0.16], end: [-0.08, 0.26] },
   { c1: [-0.06, 0.36], c2: [0.12, 0.34], end: [0.12, 0.47] },
   { c1: [0.12, 0.59], c2: [-0.04, 0.64], end: [0.05, 0.76] },
   { c1: [0.13, 0.88], c2: [0.34, 0.9], end: [0.58, 1.05] },
 ];
-const SHIFT_FACTOR = 0.55;
 const FONT_OFFSET = 0.2;
 let measureCtx;
 
@@ -49,7 +47,7 @@ export default function ScrollCurve({ regionRef }) {
         ctx = null;
       }
       const anchor = region.querySelector('.curve-anchor');
-      if (window.innerWidth < MIN_WIDTH || !anchor) {
+      if (!anchor) {
         svg.style.display = 'none';
         return;
       }
@@ -66,17 +64,21 @@ export default function ScrollCurve({ regionRef }) {
       const sx = aRect.left + aRect.width / 2 - rRect.left;
       const sy = aRect.bottom - rRect.top - fontSize * FONT_OFFSET;
 
-      const strokeW = measureIWidth(aStyle.fontWeight, fontSize, aStyle.fontFamily);
+      const rawStroke = measureIWidth(aStyle.fontWeight, fontSize, aStyle.fontFamily);
+      const strokeW = rw < 600 ? Math.max(3.5, Math.min(rawStroke || 4, 6)) : rawStroke;
       if (strokeW > 0) {
         path.style.strokeWidth = `${strokeW}px`;
       }
 
+      // Proportional horizontal spread: subtle dampening on mobile so it stays elegantly in frame
+      const xFactor = rw < 600 ? 0.45 : 1.0;
+
       const pts = CURVE_POINTS.map((p) => ({
-        c1x: sx + p.c1[0] * rw,
+        c1x: sx + p.c1[0] * rw * xFactor,
         c1y: sy + p.c1[1] * rh,
-        c2x: sx + p.c2[0] * rw,
+        c2x: sx + p.c2[0] * rw * xFactor,
         c2y: sy + p.c2[1] * rh,
-        ex: sx + p.end[0] * rw,
+        ex: sx + p.end[0] * rw * xFactor,
         ey: sy + p.end[1] * rh,
       }));
 
@@ -94,7 +96,7 @@ export default function ScrollCurve({ regionRef }) {
           ease: 'none',
           scrollTrigger: {
             trigger: anchor,
-            start: 'top 20%',
+            start: 'top 25%',
             endTrigger: roles || region,
             end: 'bottom center',
             scrub: true,

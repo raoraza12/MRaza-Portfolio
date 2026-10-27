@@ -1,52 +1,175 @@
-.scroll-background-root {
-  position: fixed;
+/* Kinetic Organic Ribbon Video - Hardware Tinted Radiant Fiery Crimson-Orange (Ultra Smooth Color Grade) */
+.sb-video {
+  object-fit: cover !important;
+  filter: hue-rotate(185deg) saturate(2.4) brightness(1.1) contrast(1.05) blur(1px) !important;
+  opacity: 0.9 !important;
+  mix-blend-mode: screen !important;
+  transform: scale(1.08) !important;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
+}
+
+.sb-root {
+  background: radial-gradient(
+    ellipse 110% 85% at 50% 48%,
+    rgba(255, 78, 10, 0.36) 0%,
+    rgba(205, 42, 8, 0.2) 45%,
+    rgba(14, 7, 10, 0.94) 85%,
+    #070407 100%
+  ) !important;
+  z-index: 0 !important;
+}
+
+/* Subtle, soft cinematic grain instead of rough coarse noise */
+.sb-grain {
+  opacity: 0.08 !important;
+  mix-blend-mode: overlay !important;
+}
+
+.sb-grain-coarse {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* GPU-Accelerated Pure CSS Kinetic Aurora (Guaranteed animation on mobile & desktop) */
+.sb-aurora-wrap {
+  position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s ease;
+  opacity: 0.82;
+  filter: blur(48px);
 }
 
-.scroll-background-root.is-zoomed {
-  transform: scale(1.12);
-}
-
-.bg-gradient-orb {
+.sb-aurora-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.25;
-  transition: background-color 0.6s ease;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
 }
 
-.orb-1 {
-  width: 600px;
-  height: 600px;
-  top: -150px;
-  right: -100px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+.sb-aurora-1 {
+  width: 90vw;
+  height: 90vw;
+  max-width: 900px;
+  max-height: 900px;
+  top: -15%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(255, 75, 10, 0.48) 0%, rgba(220, 30, 0, 0.22) 55%, transparent 75%);
+  animation: auroraFlow1 18s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
-.orb-2 {
-  width: 700px;
-  height: 700px;
-  bottom: 5%;
-  left: -200px;
-  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-  opacity: 0.15;
+.sb-aurora-2 {
+  width: 95vw;
+  height: 95vw;
+  max-width: 1000px;
+  max-height: 1000px;
+  bottom: -20%;
+  right: -15%;
+  background: radial-gradient(circle, rgba(255, 110, 20, 0.42) 0%, rgba(180, 20, 10, 0.24) 50%, transparent 75%);
+  animation: auroraFlow2 22s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
-.bg-grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(to right, color-mix(in srgb, var(--border) 40%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--border) 40%, transparent) 1px, transparent 1px);
-  background-size: 64px 64px;
-  opacity: 0.35;
-  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+.sb-aurora-3 {
+  width: 75vw;
+  height: 75vw;
+  max-width: 800px;
+  max-height: 800px;
+  top: 30%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(240, 60, 10, 0.38) 0%, rgba(130, 10, 20, 0.18) 60%, transparent 80%);
+  animation: auroraFlow3 26s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+@keyframes auroraFlow1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(8vw, 12vh, 0) rotate(45deg) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-5vw, 6vh, 0) rotate(90deg) scale(0.95);
+  }
+}
+
+@keyframes auroraFlow2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-10vw, -8vh, 0) rotate(-40deg) scale(1.18);
+  }
+  100% {
+    transform: translate3d(6vw, -14vh, 0) rotate(-80deg) scale(0.92);
+  }
+}
+
+@keyframes auroraFlow3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(-6vw, 10vh, 0) scale(1.22);
+  }
+  100% {
+    transform: translate3d(10vw, -6vh, 0) scale(1.05);
+  }
+}
+
+.sb-wash {
+  /* Gentle luminous additive glow instead of mobile-breaking mix-blend-mode: color */
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 85, 0, 0.25) 0%,
+    rgba(200, 35, 0, 0.1) 50%,
+    transparent 80%
+  ) !important;
+  mix-blend-mode: screen !important;
+}
+
+.sb-cover {
+  background: #090305 !important;
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+.sb-tint {
+  background: rgba(255, 90, 0, 0.05) !important;
+}
+
+/* Enhanced mobile responsiveness & guaranteed animation */
+@media (max-width: 768px) {
+  .sb-cover {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .sb-aurora-wrap {
+    opacity: 0.95 !important;
+    filter: blur(32px) !important;
+  }
+  .sb-video {
+    filter: hue-rotate(185deg) saturate(2.4) brightness(1.15) contrast(1.05) !important;
+    opacity: 0.92 !important;
+    display: block !important;
+  }
+  .sb-grain {
+    opacity: 0.06 !important;
+    animation: 1.6s steps(6, end) infinite sbGrain !important;
+  }
+  .sb-grain-coarse {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  .sb-root {
+    background: radial-gradient(
+      ellipse 120% 90% at 50% 48%,
+      rgba(255, 78, 10, 0.38) 0%,
+      rgba(205, 42, 8, 0.22) 45%,
+      rgba(14, 7, 10, 0.95) 85%,
+      #070407 100%
+    ) !important;
+  }
 }

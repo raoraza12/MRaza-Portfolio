@@ -7,6 +7,34 @@ export default function FixedVideoBg() {
   const vidRef = useRef(null);
 
   useEffect(() => {
+    const vid = vidRef.current;
+    if (!vid) return;
+
+    vid.muted = true;
+    vid.defaultMuted = true;
+    vid.playsInline = true;
+    vid.setAttribute('muted', '');
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', 'true');
+
+    const tryPlay = () => {
+      if (vid.paused) {
+        vid.play().catch(() => {});
+      }
+    };
+
+    ['touchstart', 'touchend', 'scroll', 'click', 'pointerdown'].forEach((evt) => {
+      window.addEventListener(evt, tryPlay, { passive: true });
+    });
+
+    return () => {
+      ['touchstart', 'touchend', 'scroll', 'click', 'pointerdown'].forEach((evt) => {
+        window.removeEventListener(evt, tryPlay);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
     if (!active) return;
     const vid = vidRef.current;
     const diveVid = document.querySelector('.dive-video');
@@ -15,6 +43,7 @@ export default function FixedVideoBg() {
         vid.currentTime = diveVid.currentTime;
       } catch (_) {}
     }
+    vid?.play().catch(() => {});
   }, [active]);
 
   useEffect(() => {
@@ -54,6 +83,7 @@ export default function FixedVideoBg() {
         loop
         muted
         playsInline
+        webkit-playsinline="true"
         preload="auto"
       />
       <div className="fvb-grad" />

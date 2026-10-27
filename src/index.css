@@ -241,30 +241,35 @@ body {
   transform: scale(1.03);
 }
 
-/* 3. Hero Reveal Balanced Cinematic Aesthetic (Matches End of Site) */
+/* 3. Hero Reveal Radiant Studio Aesthetic (Matching Reference Video 1:1) */
 .reveal {
-  background: #090a0f !important;
+  background: #090303 !important;
 }
 
 .reveal-img {
-  filter: contrast(1.05) brightness(0.92) saturate(0.9) !important;
-  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  filter: contrast(1.01) brightness(1.0) saturate(1.02) !important;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-top {
-  /* Elegant warm bronze depth - non-glaring, rich dark cinematic tone */
-  filter: contrast(1.08) brightness(0.95) saturate(0.98) sepia(0.08) hue-rotate(-6deg) !important;
+  /* Razor sharp creative tech mode with vivid glowing cyan & gold cyber armor */
+  filter: contrast(1.04) brightness(1.02) saturate(1.06) !important;
 }
 
-/* Smooth dark cinematic vignette to blend into obsidian background */
+/* Subtle, soft cinematic vignette around outer perimeter only - preserves radiant orange core */
 .reveal::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  background: radial-gradient(ellipse 95% 85% at 50% 45%, rgba(9, 10, 15, 0.05) 30%, rgba(9, 10, 15, 0.55) 75%, rgba(9, 10, 15, 0.92) 100%);
-  mix-blend-mode: multiply;
+  background: radial-gradient(ellipse 95% 90% at 50% 45%, transparent 60%, rgba(10, 4, 6, 0.35) 85%, rgba(6, 2, 4, 0.8) 100%);
+}
+
+/* Soften all background noise overlays so orange gradients remain silky smooth */
+.dive-noise,
+.fvb-noise {
+  opacity: 0.1 !important;
 }
 
 .reveal.is-forced .reveal-top {
@@ -282,12 +287,12 @@ body {
 }
 
 .reveal-scrim-top {
-  background: linear-gradient(to bottom, rgba(9, 10, 15, 0.9) 0%, rgba(9, 10, 15, 0.35) 45%, transparent 100%) !important;
+  background: linear-gradient(to bottom, rgba(8, 3, 5, 0.88) 0%, rgba(8, 3, 5, 0.32) 45%, transparent 100%) !important;
   height: 28vh !important;
 }
 
 .reveal-scrim-bottom {
-  background: linear-gradient(to top, rgba(9, 10, 15, 0.95) 0%, rgba(9, 10, 15, 0.55) 35%, transparent 100%) !important;
+  background: linear-gradient(to top, rgba(7, 2, 4, 0.95) 0%, rgba(7, 2, 4, 0.5) 35%, transparent 100%) !important;
   height: 38vh !important;
 }
 
@@ -312,11 +317,19 @@ body {
 }
 
 @media (max-width: 640px) {
+  .reveal-caption {
+    bottom: 12px !important;
+    left: 14px !important;
+    font-size: 10px !important;
+    max-width: 56% !important;
+    line-height: 1.25 !important;
+  }
+
   .reveal-hint-badge {
-    bottom: 1rem;
-    right: 1rem;
-    font-size: 0.62rem;
-    padding: 0.35rem 0.75rem;
+    bottom: 10px !important;
+    right: 12px !important;
+    font-size: 0.6rem !important;
+    padding: 0.32rem 0.7rem !important;
   }
 }
 

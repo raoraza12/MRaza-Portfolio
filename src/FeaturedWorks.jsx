@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import nexusImg from './assets/projects/nexus-ai-book.png';
+import cloudWarehouseImg from './assets/projects/cloud-data-warehouse.jpg';
 import drakeImg from './assets/projects/drakewears.png';
 import earthyImg from './assets/projects/earthyelectronics.png';
 import healthImg from './assets/projects/healthmate.png';
@@ -19,6 +20,16 @@ const PROJECTS = [
     side: 'left',
   },
   {
+    id: 'cloud-data-warehouse',
+    title: 'Cloud Data Warehouse',
+    desc: 'Enterprise ETL pipeline and 3D cyber-forensic operations center with real-time biometric telemetry ingestion, data cleaning, automated warehousing, and CFO analytics.',
+    stack: 'Python • Cloud Data Pipeline • SQL • 3D Telemetry • Fast Stream Ingestion',
+    liveUrl: 'https://cfo-dashboard.vercel.app',
+    img: cloudWarehouseImg,
+    size: 'half',
+    side: 'left',
+  },
+  {
     id: 'drakewears',
     title: 'Drake Wears',
     desc: 'High-fashion apparel storefront engineered with smooth Lenis inertia physics, interactive cart drawer, and high-performance Postgres backend.',
@@ -27,7 +38,7 @@ const PROJECTS = [
     githubUrl: 'https://github.com/raoraza12/drakewears',
     img: drakeImg,
     size: 'half',
-    side: 'left',
+    side: 'right',
   },
   {
     id: 'earthy-electronics',
@@ -38,7 +49,7 @@ const PROJECTS = [
     githubUrl: 'https://github.com/raoraza12/earthy-electronics',
     img: earthyImg,
     size: 'half',
-    side: 'right',
+    side: 'left',
   },
   {
     id: 'healthmate',
@@ -49,7 +60,7 @@ const PROJECTS = [
     githubUrl: 'https://github.com/raoraza12/HealthMate',
     img: healthImg,
     size: 'half',
-    side: 'left',
+    side: 'right',
   },
   {
     id: 'salt-and-pepper',
@@ -59,8 +70,8 @@ const PROJECTS = [
     liveUrl: 'https://salt-and-pepper-flax.vercel.app',
     githubUrl: 'https://github.com/raoraza12/SALT-AND-PEPPER',
     img: saltImg,
-    size: 'half',
-    side: 'right',
+    size: 'big',
+    side: 'left',
   },
   {
     id: 'indus-weave-hr',
